@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>可爱的小手手</title>
+  <!-- #84B67B #AEB4AA -->
+  <style>
+     :root {
+      --heading-color: rgb(226, 226, 226);
+    }
+    
+    * {
+      box-sizing: border-box;
+      font-family: '微软雅黑';
+    }
+    
+    html,
+    body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    body {
+      margin: 0;
+    }
+    
+    .clx:before,
+    .clx:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    
+    .vertical-middle {
+      vertical-align: middle;
+    }
+    
+    .box {
+      position: relative;
+      height: 100%;
+      background: -webkit-linear-gradient(-60deg, #87B883 0%, #B9CFB6 40%, #B9CFB6 40%, #CBD1C6 100%);
+      padding-top: 100px;
+    }
+    
+    .hand-box {
+      text-align: center;
+      margin-top: 200px;
+    }
+    
+    .hand {
+      font-size: 0;
+      display: inline-block;
+    }
+    
+    .wrist {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      background-color: #FECAAA;
+      border-top: 2px solid #C09576;
+      display: inline-block;
+      margin-right: -25px;
+      z-index: 1;
+    }
+    
+    .palm {
+      position: relative;
+      width: 280px;
+      height: 365px;
+      border: 2px solid #C09576;
+      border-right: none;
+      border-radius: 30px 0 0 30px;
+      background-color: #FECAAA;
+      display: inline-block;
+    }
+    
+    .finger {
+      padding: 5px;
+    }
+    
+    .thumb {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 94px;
+      border-radius: 0 50px 50px 0;
+      background-color: #FECAAA;
+      border: 2px solid #C09576;
+      border-bottom: none;
+      border-left: none;
+      transform-origin: 0 0;
+      transform: translateX(15px) translateY(1px) rotate(-60deg);
+    }
+    
+    .common-finger {
+      position: relative;
+      height: calc(25% + 2.5px);
+      width: 93px;
+      border-radius: 0 50px 50px 0;
+      background-color: #FECAAA;
+      border: 2px solid #C09576;
+      border-left: none;
+      right: -41px;
+      margin-left: 210px;
+      margin-top: -2px;
+    }
+    
+    .first-knuckle {
+      position: relative;
+      height: 100%;
+      width: 75px;
+      border-radius: 0 50px 50px 0;
+      background-image: -webkit-linear-gradient(left, rgba(192, 149, 118, 0), rgba(255, 255, 255, 0.5));
+      float: right;
+    }
+    
+    .second-knuckle {
+      position: relative;
+      height: 100%;
+      width: 40px;
+      border-radius: 0 50px 50px 0;
+      background-image: -webkit-linear-gradient(left, rgba(192, 149, 118, 0), rgba(192, 149, 118, 0.5));
+      float: right;
+      margin-right: 15px;
+    }
+    
+    .plus {
+      font-size: 30px;
+      color: red;
+      position: absolute;
+      right: 150px;
+      top: 100px;
+      opacity: 0;
+    }
+    
+    .plus.animate {
+      animation: plus 1s linear 1;
+    }
+    
+    .hand.disabled .wrist,
+    .hand.disabled .palm,
+    .hand.disabled .finger {
+      background-color: rgb(226, 226, 226);
+    }
+    
+    @keyframes plus {
+      0% {
+        font-size: 25px;
+        transform: translateY(0px) scale(1) translateZ(0);
+        opacity: 0;
+      }
+      50% {
+        font-size: 30px;
+        transform: translateY(-25px) scale(1.2) translateZ(0);
+        opacity: 1;
+      }
+      100% {
+        font-size: 25px;
+        transform: translateY(-50px) scale(1) translateZ(0);
+        opacity: 0;
+      }
+    }
+  </style>
+  <script src="./plus.js"></script>
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./bower_components/lodash/dist/lodash.min.js"></script>
+  <script src="http://cdn.bootcss.com/systemjs/0.20.2/system.js"></script>
+</head>
+
+<body>
+  <div class='box'>
+
+    <span class='plus'>+1</span>
+
+    <div class='hand-box'>
+      <div class='hand clx disabled'>
+        <!-- 手腕 -->
+        <div class='wrist vertical-middle'></div>
+        <!-- 手掌 -->
+        <div class='palm vertical-middle'>
+          <p style='font-size: 18px;position: absolute;left: 50px;top: 145px;'>点击了第<span id='clickIndex'></span>次</p>
+          <!-- 拇指 -->
+          <div class='finger thumb'>
+            <!-- 一级指节 -->
+            <div class='first-knuckle'></div>
+            <!-- 二级指节 -->
+            <div class='second-knuckle'></div>
+          </div>
+
+          <!-- 其余四根手指 -->
+          <div class='finger common-finger'>
+            <!-- 一级指节 -->
+            <div class='first-knuckle'></div>
+          </div>
+          <!-- 其余四根手指 -->
+          <div class='finger common-finger'>
+            <!-- 一级指节 -->
+            <div class='first-knuckle'></div>
+          </div>
+          <!-- 其余四根手指 -->
+          <div class='finger common-finger'>
+            <!-- 一级指节 -->
+            <div class='first-knuckle'></div>
+          </div>
+          <!-- 其余四根手指 -->
+          <div class='finger common-finger'>
+            <!-- 一级指节 -->
+            <div class='first-knuckle'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  SystemJS.config({
+    baseURL: '/Hand-Demo/src'
+  });
+  SystemJS.import('hand.js').then(function(m) {
+    // jquery 继承
+    $.extend({
+      thumb: (num, $el) => {
+        return new m.default.Hand(num, $el);
+      }
+    });
+
+    // 初始化组件
+    $.thumb(0, $('.hand'));
+  });
+</script>
+
+</html>

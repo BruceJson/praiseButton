@@ -1,14 +1,15 @@
 {
   "name": "systemjs",
-  "homepage": "https://github.com/mrdoob/system.js",
-  "_release": "355588df5e",
+  "homepage": "https://github.com/systemjs/systemjs",
+  "version": "0.20.19",
+  "_release": "0.20.19",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "355588df5e0fd52fa434a1a988df40f8d79af772"
+    "type": "version",
+    "tag": "0.20.19",
+    "commit": "aa6d18cfac1c4c1fcd3abe23d3353853edbdadf8"
   },
-  "_source": "https://github.com/mrdoob/system.js.git",
-  "_target": "*",
-  "_originalSource": "systemjs",
+  "_source": "https://github.com/systemjs/systemjs.git",
+  "_target": "^0.20.19",
+  "_originalSource": "systemjs/systemjs",
   "_direct": true
 }

@@ -1,12 +1,14 @@
 SystemJS.config({
-  baseURL: '/Hand-Demo/src'
+    baseURL: './',
 });
-SystemJS.import('hand.js').then(function (m) {
-  $.extend({
-    thumb: m.default.Hand
+SystemJS.import('src/hand.js').then(function (component) {
+    // jquery 继承
+    $.extend({
+        thumb: (num, $el) => {
+            return new component.default.Hand(num, $el);
+        }
+    });
 
-  });
-
-  $.thumb(0, $('.hand'));
-
+    // 初始化组件
+    $.thumb(0, $('.hand'));
 });
